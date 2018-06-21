@@ -49,6 +49,10 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 
+		app.GET("/users/{name}", func (c buffalo.Context) error {
+  	  return c.Render(200, r.String(c.Param("name")))
+		})
+
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
